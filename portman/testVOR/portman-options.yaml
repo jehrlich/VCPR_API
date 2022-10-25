@@ -1,0 +1,15 @@
+---
+local: "./src/openapi.yaml"
+#baseUrl: https://test.vcpr.org
+baseUrl: http://localhost:9000
+output: "./portman/postman-asTestVOR.json"
+portmanConfigFile: "./portman/portman-config-asTestVOR.yaml"
+envFile: "./portman/.env-portman"
+includeTests: true
+syncPostman: false
+runNewman: false
+postmanConfigFile: "./portman/postman-config.json"
+postmanWorkspaceName: VCPR.ORG
+collectionName: PublicAPI
+postmanFastSync: true
+#filterFile: "./portman/filter-VOR.yml"

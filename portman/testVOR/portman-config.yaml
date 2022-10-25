@@ -1,0 +1,41 @@
+version: 1
+assignVariables:
+  - openApiOperationId: authenticate
+    collectionVariables:
+      - responseHeaderProp: X-AUTH-TOKEN
+globals:
+  stripResponseExamples: true
+  # collectionPreRequestScripts:
+  #   # - "console.log(pm.collectionVariables.get(\"authenticate.X-AUTH-TOKEN\"));"
+  #   -  "pm.request.headers.add({key: \"X-AUTH-TOKEN\", value: pm.collectionVariables.get(\"authenticate.X-AUTH-TOKEN\")});"
+  #   - console.log(pm.request.headers);
+  securityOverwrites: 
+    apiKey: 
+      value: "{{authenticate.X-AUTH-TOKEN}}"
+
+tests:
+  contractTests:
+    - openApiOperationId: getLabels
+      statusCode:
+        enabled: true
+        code: 200
+    # - openApiOperationId: authenticate
+    #   statusCode:
+    #     enabled: true
+    #     code: 303
+    # - openApiOperation: "*::/api/Protocols/*"
+    #   statusCode:
+    #     enabled: true
+    #     code: 401
+    # - openApiOperation: "*::'/api/admin/spl/*'"
+    #   contentType:
+    #     enabled: true
+    # - openApiOperationId: getSPL
+    #   jsonBody:
+    #     enabled: true
+    # - openApiOperationId: getSPL
+    #   schemaValidation:
+    #     enabled: true
+    # - openApiOperationId: getSPL
+    #   headersPresent:
+    #     enabled: true
